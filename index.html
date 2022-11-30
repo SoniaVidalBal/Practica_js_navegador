@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de gastos</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="./index_js.js"></script>
+    <header class="head">
+        <p class="title">Control de gastos</p>
+    </header>
+    <hr>
+    <main class="mainbody">
+        <div class="totalsaving">
+            <p class="subtitle">Tu ahorro</p>
+        </div>
+        <section class="income-expense">
+            <div class="inbtitle">Ingresos
+                <div class="income">0.00€</div>
+            </div>
+            <div class="inbtitle">Gastos
+                <div class="expense">0.00€</div>
+            </div>
+        </section>
+        <section class="history">
+            <p class="subtitle">Historial</p> 
+        </section>
+        <hr>
+        <section class="new-transaction">
+            <p class="subtitle">Añadir nueva transacción</p>
+            <hr> 
+            <form action="" method="post">
+                <div class="getconcept">
+                  <label for="concept">Concepto:</label>
+                  <input required id="concept" type="text" placeholder="Añade un concepto">
+                </div> 
+                <div class="getquantity">
+                    <label for="quantity">Cantidad: (usa - para gastos)</label>
+                    <input required id="quantity" type="number" placeholder="Introduce cantidad">
+                </div>
+                <input class="button" type="submit" value="Añadir transacción"> 
+            </form>
+        </section>
+    </main>
+</body>
+</html>
