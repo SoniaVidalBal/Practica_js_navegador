@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de gastos</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="./index_js.js"></script>
+
     <header class="head">
         <p class="title">Control de gastos</p>
     </header>
@@ -19,15 +18,18 @@
             <p class="subtitle">Tu ahorro</p>
         </div>
         <section class="income-expense">
-            <div class="inbtitle">Ingresos
-                <div class="income">0.00€</div>
+            <div class="intitle">Ingresos
+                <div class="income"></div>
             </div>
-            <div class="inbtitle">Gastos
-                <div class="expense">0.00€</div>
+            <div class="intitle">Gastos
+                <div class="expense"></div>
             </div>
         </section>
+        <hr>
         <section class="history">
             <p class="subtitle">Historial</p> 
+            <ul class="transactions">
+            </ul>
         </section>
         <hr>
         <section class="new-transaction">
@@ -42,9 +44,10 @@
                     <label for="quantity">Cantidad: (usa - para gastos)</label>
                     <input required id="quantity" type="number" placeholder="Introduce cantidad">
                 </div>
-                <input class="button" type="submit" value="Añadir transacción"> 
             </form>
+            <button class="button">Añadir</button>
         </section>
     </main>
+    <script src="./index_js.js"></script>
 </body>
 </html>
