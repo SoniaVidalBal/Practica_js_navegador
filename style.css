@@ -1,0 +1,38 @@
+:root{
+    margin: 5px;
+    font-size: 16px;
+    font-family: Cambria;
+    background-color: rgb(187, 186, 186);
+    text-align: center;
+    box-sizing: border-box;
+}
+.title {
+    font-size: 2rem;
+}
+.total {
+    font-size: 2rem;
+}
+.subtitle{
+    font-size: 1.5rem;
+}
+.intitle{
+    font-size: 1.2rem;
+}
+.income, .expense{
+    font-size: 1.2rem;
+}
+.income-expense{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+li{
+    width: 80vw;
+    height: 20px;
+    margin: auto;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}

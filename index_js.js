@@ -18,7 +18,8 @@ create_transaction.addEventListener("submit", (event) => {
     elementList.appendChild(child)
 
     
-   incomes_expenses(inputquantity.value)
+    incomes_expenses(inputquantity.value)
+    total()
 
     inputconcept.value = '';
     inputquantity.value = '';
@@ -30,7 +31,7 @@ let negative_operations = []
 function incomes_expenses(inputquantity){
     const ingresos = document.querySelector(".income")
     const gastos = document.querySelector(".expense")
-    const nums = parseInt(inputquantity)
+    const nums = parseFloat(inputquantity)
         if (nums < 0){
             negative_operations.push(nums)
             return gastos.textContent = negative_operations.reduce((accum, operation) => accum + operation, 0)
@@ -40,4 +41,10 @@ function incomes_expenses(inputquantity){
         } 
 }
 
-
+function total(){
+    const displaysumatotal = document.querySelector(".total")
+    const totalingresos = positive_operations.reduce((accum, operation) => accum + operation, 0)
+    const totalgastos = negative_operations.reduce((accum, operation) => accum + operation, 0)
+    const sumatotal = totalingresos + totalgastos
+    return displaysumatotal.textContent = sumatotal
+}
