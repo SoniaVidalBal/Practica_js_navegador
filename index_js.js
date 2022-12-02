@@ -1,12 +1,18 @@
 
 const create_transaction = document.querySelector(".addtransaction");
+const inputconcept = document.querySelector("#concept");
+const inputquantity = document.querySelector("#quantity");
 
 create_transaction.addEventListener("submit", (event) => {
     event.preventDefault();
+    gettransaction();
+    incomes_expenses(inputquantity.value);
+    total();
+    inputconcept.value = '';
+    inputquantity.value = '';
+})
 
-    const inputconcept = document.querySelector("#concept");
-    const inputquantity = document.querySelector("#quantity");
-
+function gettransaction(){
     let transaction = {
         concept: inputconcept.value,
         quantity: inputquantity.value
@@ -17,13 +23,20 @@ create_transaction.addEventListener("submit", (event) => {
     const elementList = document.querySelector(".transactions")
     elementList.appendChild(child)
 
-    
-    incomes_expenses(inputquantity.value)
-    total()
-
-    inputconcept.value = '';
-    inputquantity.value = '';
-})
+    const close = document.createElement('button')
+    close.textContent = 'x'
+    child.appendChild(close)
+    close.addEventListener('click', () => {
+        elementList.remove(child)
+        const displaysumatotal = document.querySelector(".total")
+        displaysumatotal.textContent = total() - transaction.quantity
+        const ingresos = document.querySelector(".income")
+        const gastos = document.querySelector(".expense")
+        ingresos.textContent = incomes_expenses(inputquantity.value) - transaction.quantity
+        gastos.textContent = incomes_expenses(inputquantity.value) - transaction.quantity
+        
+    })
+}
 
 let positive_operations = []
 let negative_operations = []
@@ -34,11 +47,14 @@ function incomes_expenses(inputquantity){
     const nums = parseFloat(inputquantity)
         if (nums < 0){
             negative_operations.push(nums)
-            return gastos.textContent = negative_operations.reduce((accum, operation) => accum + operation, 0)
+            gastos.textContent = negative_operations.reduce((accum, operation) => accum + operation, 0)
+            return (gastos.textContent)
         }else if(nums > 0){
             positive_operations.push(nums)
-            return ingresos.textContent = positive_operations.reduce((accum, operation) => accum + operation, 0)
-        } 
+            ingresos.textContent = positive_operations.reduce((accum, operation) => accum + operation, 0)
+            return (ingresos.textContent)
+        }
+    return (ingresos.textContent)
 }
 
 function total(){
@@ -48,3 +64,4 @@ function total(){
     const sumatotal = totalingresos + totalgastos
     return displaysumatotal.textContent = sumatotal
 }
+
