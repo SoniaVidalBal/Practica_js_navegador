@@ -35,7 +35,7 @@
         <hr>
         <section class="new-transaction">
             <p class="subtitle">Añadir nueva transacción</p>
-            <form action="" method="post">
+            <form class="addtransaction" novalidate>
                 <div class="getconcept">
                   <label for="concept">Concepto:</label>
                   <input required id="concept" type="text" placeholder="Añade un concepto">
@@ -44,8 +44,9 @@
                     <label for="quantity">Cantidad: (usa - para gastos)</label>
                     <input required id="quantity" type="number" placeholder="Introduce cantidad">
                 </div>
+                <button class="button">Añadir</button>
             </form>
-            <button class="button">Añadir</button>
+            
         </section>
     </main>
     <script src="./index_js.js"></script>
