@@ -10,21 +10,4 @@ if (input1localstorage && input2localstorage) {
     elementList.appendChild(child)
 }
 
-incomesexpenses()
-function incomesexpenses(){
-    //const gastos = document.querySelector(".expense")
-    const ingresos = document.querySelector(".income")
-    const gastos = document.querySelector(".expense")
-    const nums = parseInt(inputquantity.value)
-        if (nums < 0){
-            localStorage.setItem("cantidadnegativa", nums)
-            const inputnegative = localStorage.getItem("cantidadnegativa")
-            const nums2 = (parseInt(inputnegative) + nums)
-            return gastos.textContent = nums2}
-        else if(nums > 0){
-            localStorage.setItem("cantidadpositiva", nums)
-            const inputpositive = localStorage.getItem("cantidadpositiva")
-            const nums3 = (parseInt(inputpositive) + nums)
-            return ingresos.textContent = nums3
-        }
-}
+
