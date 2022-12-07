@@ -5,6 +5,7 @@ const inputquantity = document.querySelector("#quantity");
 
 create_transaction.addEventListener("submit", (event) => {
     event.preventDefault();
+    localStorage.setItem("transaccion", `${inputconcept.value}: ${inputquantity.value}`);
     gettransaction();
     incomes_expenses(inputquantity.value);
     total();
@@ -22,7 +23,7 @@ function gettransaction(){
     child.textContent = `${transaction.concept}: ${transaction.quantity}`
     const elementList = document.querySelector(".transactions")
     elementList.prepend(child)
-
+    
     const close = document.createElement('button')
     close.textContent = 'x'
     child.appendChild(close)
@@ -30,6 +31,8 @@ function gettransaction(){
         elementList.removeChild(child)
         delete_transaction(transaction.quantity)
     })
+    
+
 }
 
 let positive_operations = []
@@ -43,13 +46,14 @@ function incomes_expenses(inputquantity){
         if (nums < 0){
             negative_operations.push(nums)
             gastos.textContent = negative_operations.reduce((accum, operation) => accum + operation, 0)
+            localStorage.setItem("gastos", gastos.textContent)
             return (gastos.textContent)
         }else if(nums > 0){
             positive_operations.push(nums)
             ingresos.textContent = positive_operations.reduce((accum, operation) => accum + operation, 0)
+            localStorage.setItem("ingresos", ingresos.textContent)
             return (ingresos.textContent)
         }
-    return (ingresos.textContent)
 }
 
 function total(){
@@ -57,6 +61,7 @@ function total(){
     const totalingresos = positive_operations.reduce((accum, operation) => accum + operation, 0)
     const totalgastos = negative_operations.reduce((accum, operation) => accum + operation, 0)
     const sumatotal = totalingresos + totalgastos
+    localStorage.setItem("total", sumatotal)
     return displaysumatotal.textContent = sumatotal
 }
 
@@ -68,6 +73,23 @@ function delete_transaction(transactionquant){
     total()
 }
 
-    //displaysumatotal.textContent = total() - transactionquant
-    //ingresos.textContent = incomes_expenses(inputquantity.value) - transactionquant
-    //gastos.textContent = incomes_expenses(inputquantity.value) - transactionquant
+const input1localstorage = localStorage.getItem("transaccion")
+const incomeStorage = localStorage.getItem("ingresos")
+const expenseStorage = localStorage.getItem("gastos")
+const totalStorage = localStorage.getItem("total")
+if (input1localstorage) {
+    const child = document.createElement('li')
+    const elementList = document.querySelector(".transactions")
+    child.textContent = input1localstorage
+    elementList.appendChild(child)
+}
+if (incomeStorage){
+    incomes_expenses(incomeStorage)
+}
+if (expenseStorage){
+    incomes_expenses(expenseStorage)
+}
+if (totalStorage){
+    displaysumatotal.textContent = totalStorage
+}
+
