@@ -1,19 +1,30 @@
 :root{
-    margin: 5px;
     font-size: 16px;
     font-family: Cambria;
     background-color: rgb(187, 186, 186);
     text-align: center;
     box-sizing: border-box;
+
+}
+
+.getconcept, .getquantity{
+    margin: 15px;
+}
+
+.history {
+    margin: 15px;
 }
 .title {
     font-size: 2rem;
+    color: brown;
+    margin: 20px;
 }
 .total {
     font-size: 2rem;
 }
 .subtitle{
     font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 .intitle{
     font-size: 1.2rem;
@@ -35,4 +46,16 @@ li{
     margin-top: 5px;
     border: 1px solid black;
     border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+li button{
+    background-color: rgb(187, 186, 186);
+    color: rgb(116, 0, 0);
+    border: 0px;
+    transition: color 0.3s linear ;
+}
+li button:hover{
+    color: rgb(230, 9, 9);
 }
