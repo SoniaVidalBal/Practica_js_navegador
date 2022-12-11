@@ -25,15 +25,16 @@ function gettransaction(){
     const elementList = document.querySelector(".transactions");
     elementList.prepend(child);
 
+    transactionsStorage.push(transaction);
+
     const close = document.createElement('button');
     close.textContent = 'x';
     child.appendChild(close);
     close.addEventListener('click', () => {
         elementList.removeChild(child);
+        transactionsStorage = transactionsStorage.filter((item) => item != transaction);
         delete_transaction(transaction.quantity);
     });
-
-    transactionsStorage.push(transaction);
 }
 
 let positive_operations = [];
@@ -71,6 +72,7 @@ function delete_transaction(transactionquant){
     ingresos.textContent = positive_operations.reduce((accum, operation) => accum + operation, 0);
     gastos.textContent = negative_operations.reduce((accum, operation) => accum + operation, 0);
     total();
+    localStorage.setItem("transaccion", JSON.stringify(transactionsStorage));
 }
 
 let inputLocalStorage = JSON.parse(localStorage.getItem('transaccion'));
@@ -79,7 +81,12 @@ const expenseStorage = localStorage.getItem("gastos");
 const totalStorage = localStorage.getItem("total");
 
 if (inputLocalStorage) {
+
     for (let index = 0; index < inputLocalStorage.length; index++) {
+
+        transactionsStorage.push(inputLocalStorage[index]) 
+        localStorage.setItem('transaccion', JSON.stringify(transactionsStorage))
+
         const child = document.createElement('li');
         child.textContent = `${inputLocalStorage[index].concept}: ${inputLocalStorage[index].quantity}`;
         const elementList = document.querySelector(".transactions");
@@ -93,11 +100,15 @@ if (inputLocalStorage) {
             displaysumatotal.textContent = (parseFloat(totalStorage) - (parseFloat(inputLocalStorage[index].quantity)));
             if (parseFloat(inputLocalStorage[index].quantity) > 0){
                 const newIncomes = parseFloat(incomeStorage)-parseFloat(inputLocalStorage[index].quantity)
-                ingresos.textContent = newIncomes
+                ingresos.textContent = newIncomes;
             } else if (parseFloat(inputLocalStorage[index].quantity) < 0){
                 const newExpeses = parseFloat(expenseStorage)-parseFloat(inputLocalStorage[index].quantity)
-                gastos.textContent = newExpeses
+                gastos.textContent = newExpeses;
             }
+            transactionsStorage = transactionsStorage.filter((item) => item != inputLocalStorage[index]);
+            localStorage.removeItem('transaccion');
+            localStorage.setItem("transaccion", JSON.stringify(transactionsStorage));
+                
         }); 
     }
 }
