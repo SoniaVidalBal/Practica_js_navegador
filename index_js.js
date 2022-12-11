@@ -81,7 +81,6 @@ const expenseStorage = localStorage.getItem("gastos");
 const totalStorage = localStorage.getItem("total");
 
 if (inputLocalStorage) {
-
     for (let index = 0; index < inputLocalStorage.length; index++) {
 
         transactionsStorage.push(inputLocalStorage[index]) 
@@ -107,8 +106,7 @@ if (inputLocalStorage) {
             }
             transactionsStorage = transactionsStorage.filter((item) => item != inputLocalStorage[index]);
             localStorage.removeItem('transaccion');
-            localStorage.setItem("transaccion", JSON.stringify(transactionsStorage));
-                
+            localStorage.setItem("transaccion", JSON.stringify(transactionsStorage));    
         }); 
     }
 }

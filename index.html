@@ -36,18 +36,19 @@
         <hr>
         <section class="new-transaction">
             <p class="subtitle">Añadir nueva transacción</p>
-            <form class="addtransaction" novalidate>
+            <form class="addtransaction">
                 <div class="getconcept">
                   <label for="concept">Concepto:</label>
+                </div><div class="getconcept">
                   <input  required id="concept" type="text" placeholder="Añade un concepto">
                 </div> 
                 <div class="getquantity">
                     <label for="quantity">Cantidad: (Nº negativo para gastos)</label>
+                </div><div class="getquantity">
                     <input required id="quantity" type="number" placeholder="Introduce cantidad">
                 </div>
                 <button class="button">Añadir</button>
             </form>
-            
         </section>
     </main>
     <script src="./index_js.js"></script>
